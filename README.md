@@ -169,3 +169,48 @@ ELSE 'Scalene'
 END AS TriangleType 
 FROM TRIANGLES;
 ```
+21.Revising Aggregations - The Count Function
+```
+select count(*)
+from city 
+where population >100000;
+```
+22. Revising Aggregations - the sum function
+```
+select sum(population)
+from city 
+where District = 'California';
+```
+23. Revising Aggregations - Averages
+```
+ select avg(population) 
+from city 
+where District = 'california' ;
+```
+24. average population
+```
+select floor(avg(population) )
+from city ;
+```
+25. JAPAN POPULATION
+```
+select sum(population)
+from city 
+where countrycode = 'JPN';
+```
+26. POPULATION DENSITY DEFFRENCE
+ ```
+    SELECT MAX(POPULATION) - MIN(POPULATION) 
+FROM CITY;
+```
+27. top earns
+```
+SELECT 
+    MAX(salary * months) AS max_total_earnings,
+    COUNT(*) AS num_employees_with_max
+FROM Employee
+WHERE salary * months = (
+    SELECT MAX(salary * months) FROM Employee
+);
+```
+28. Weather Observation Station 2
