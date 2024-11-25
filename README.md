@@ -94,3 +94,78 @@ FROM STATION
 WHERE SUBSTR(CITY, 1, 1) IN ('A', 'E', 'I', 'O', 'U', 'a', 'e', 'i', 'o', 'u') AND 
 SUBSTR(CITY, LENGTH(CITY), 1) IN ('A', 'E', 'I', 'O', 'U', 'a', 'e', 'i', 'o', 'u');
 ```
+13. Weather Observation Station 9
+```
+SELECT DISTINCT city
+FROM station
+WHERE city NOT LIKE 'a%' 
+  AND city NOT LIKE 'e%' 
+  AND city NOT LIKE 'i%' 
+  AND city NOT LIKE 'o%' 
+  AND city NOT LIKE 'u%' 
+  AND city NOT LIKE 'A%' 
+  AND city NOT LIKE 'E%' 
+  AND city NOT LIKE 'I%' 
+  AND city NOT LIKE 'O%' 
+  AND city NOT LIKE 'U%';
+```
+14. Weather Observation Station 10
+```
+SELECT DISTINCT city
+FROM station
+WHERE city NOT LIKE '%a' 
+  AND city NOT LIKE '%e' 
+  AND city NOT LIKE '%i' 
+  AND city NOT LIKE '%o' 
+  AND city NOT LIKE '%u' 
+  AND city NOT LIKE '%A' 
+  AND city NOT LIKE '%E' 
+  AND city NOT LIKE '%I' 
+  AND city NOT LIKE '%O' 
+  AND city NOT LIKE '%U';
+```
+15. Weather Observation Station 11
+```
+    SELECT DISTINCT CITY
+FROM STATION
+WHERE SUBSTR(CITY, 1, 1) NOT IN ('A', 'E', 'I', 'O', 'U', 'a', 'e', 'i', 'o', 'u')
+   OR SUBSTR(CITY, LENGTH(CITY), 1) NOT IN ('A', 'E', 'I', 'O', 'U', 'a', 'e', 'i', 'o', 'u');
+```  
+16. Weather Observation Station 12
+```
+select distinct city 
+from station 
+where substr(city,1,1) not in ('a','e','i','o','u','A','E','I','O','U')
+and substr(city,-1) not in ('a','e','i','o','u','A','E','I','O','U');
+```
+17. Higher Than 75 Marks
+```
+SELECT name
+FROM students
+WHERE marks > 75
+ORDER BY SUBSTR(name, -3), id ASC;
+```
+18. Employee Names
+```    
+select name 
+from employee
+order by name asc;
+```
+19. employees salaries
+```
+select name 
+from employee 
+where salary > 2000 and months <10 
+order by employee_id asc;
+```
+20. Type of Triangle
+```
+SELECT 
+CASE 
+WHEN A + B <= C OR B + C <= A OR C + A <= B THEN 'Not A Triangle' 
+WHEN A = B AND B = C THEN 'Equilateral' 
+WHEN A = B OR B = C OR C = A THEN 'Isosceles' 
+ELSE 'Scalene' 
+END AS TriangleType 
+FROM TRIANGLES;
+```
