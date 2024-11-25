@@ -52,3 +52,45 @@ where id%2 = 0
 order by city asc;
 
 ```
+9.  Weather Observation Station 4
+```
+select  count(city) - count(distinct city) 
+from station;
+```
+10. Weather Observation Station 6
+```
+SELECT city
+FROM station
+WHERE city LIKE 'a%' 
+   OR city LIKE 'e%' 
+   OR city LIKE 'i%' 
+   OR city LIKE 'o%' 
+   OR city LIKE 'u%' 
+   OR city LIKE 'A%' 
+   OR city LIKE 'E%' 
+   OR city LIKE 'I%' 
+   OR city LIKE 'O%' 
+   OR city LIKE 'U%';
+```
+11.  Weather Observation Station 7
+```
+SELECT distinct city
+FROM station
+WHERE city LIKE '%a' 
+   OR city LIKE '%e' 
+   OR city LIKE '%i' 
+   OR city LIKE '%o' 
+   OR city LIKE '%u' 
+   OR city LIKE '%A' 
+   OR city LIKE '%E' 
+   OR city LIKE '%I' 
+   OR city LIKE '%O' 
+   OR city LIKE '%U';
+```
+12.  Weather Observation Station 8 
+```
+SELECT DISTINCT CITY 
+FROM STATION 
+WHERE SUBSTR(CITY, 1, 1) IN ('A', 'E', 'I', 'O', 'U', 'a', 'e', 'i', 'o', 'u') AND 
+SUBSTR(CITY, LENGTH(CITY), 1) IN ('A', 'E', 'I', 'O', 'U', 'a', 'e', 'i', 'o', 'u');
+```
