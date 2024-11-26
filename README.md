@@ -311,13 +311,7 @@ FROM
 ORDER BY 
     N;
 ```
-41.
-
-
-
-
-
-New Companies
+41.New Companies
 ```
 SELECT 
     c.company_code,
@@ -340,4 +334,41 @@ GROUP BY
     c.company_code, c.founder
 ORDER BY 
     c.company_code;
+```
+
+42. wather observation station 20
+    using oracal
+```
+select round(median(LAT_N),4) from station;
+```
+43.  the report 
+
+    
+``` select 
+   case 
+      when g.grade < 8 then 'NULL'
+      else s.name
+      end as name ,
+           g.grade,
+           s.marks
+      from 
+          students s 
+      join  
+          grades g on s.marks between g.min_mark and g.max_mark
+      order by g.grade DESC ,
+      case when g.grade >= 8  then s.name 
+      else s.marks
+      end asc;
+```
+44.top competitors
+```
+select s.hacker_id , h.name 
+from Submissions as s
+inner join hackers as h on s.hacker_id = h.hacker_id
+inner join challenges as C on C.challenge_id = s.challenge_id
+inner join difficulty as D on D.difficulty_level = C.difficulty_level
+where s.score = D.score
+group by s.hacker_id , h.name 
+having count(*) >1
+order by count(*) desc , s.hacker_id;
 ```
