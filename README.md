@@ -218,6 +218,104 @@ WHERE salary * months = (
 select round (sum(lat_n),2) , round(sum(long_w),2)
 from station ;
 ```
+29.Weather Observation Station 13
+```
+select truncate(sum(lat_n),4) from station 
+where lat_n >38.7880 and lat_n < 137.2345;
+```
+30.  Weather Observation Station 14
+```
+select truncate ( max(lat_n), 4) from station 
+where  lat_n< 137.2345 ;
+```
+31. Weather Observation Station 15
+```
+SELECT ROUND(LONG_W, 4) AS rounded_long_w
+FROM STATION
+WHERE LAT_N = (
+    SELECT MAX(LAT_N)
+    FROM STATION
+    WHERE LAT_N < 137.2345
+);
+```
+32.Weather Observation Station 16 
+```
+select round(min(lat_n),4) from station 
+where lat_n>38.7780;
+```
+33.Weather Observation Station 17
+```
+select round(long_w , 4) from station 
+where lat_n > 38.7780 
+order by lat_n asc 
+limit 1;
+```
+34.Weather Observation Station 18
+```
+select round ( max(lat_n) - min(lat_n) + max(long_w) - min(long_w),4)
+from station;
+```
+35.Weather Observation Station 19
+```
+SELECT ROUND(
+    SQRT(
+        POWER(MAX(lat_n) - MIN(lat_n), 2) + POWER(MAX(long_w) - MIN(long_w), 2)
+    ),
+    4) 
+    FROM station;
+```
+36. population census
+``` select 
+   sum(city.population) 
+      from city 
+      join country on country.code = city.Countrycode 
+      where continent = 'Asia';
+```
+37. african cities
+```
+select city.name from city 
+join country on country.code = city.countrycode
+where country.continent = 'Africa';
+
+```
+38.average population of each conti
+```
+select country.continent , floor(avg(city.population)) as avg_population 
+from country 
+ join city on countrycode = country.code 
+ group by country.continent;
+```
+39. wather oservation station 5
+```
+SELECT CITY, LENGTH(CITY)
+FROM STATION
+ORDER BY LENGTH(CITY) ASC, CITY ASC
+LIMIT 1;
+
+SELECT CITY, LENGTH(CITY)
+FROM STATION
+ORDER BY LENGTH(CITY) DESC, CITY DESC
+LIMIT 1
+```
+40.binary tree nodes
+```
+SELECT  
+    N,
+    CASE 
+        WHEN P IS NULL THEN 'Root'                     
+        WHEN N IN (SELECT P FROM BST WHERE P IS NOT NULL) THEN 'Inner' 
+        ELSE 'Leaf'                                  
+    END AS Binary_tree
+FROM 
+    BST
+ORDER BY 
+    N;
+```
+41.
+
+
+
+
 
 New Companies
 ```
