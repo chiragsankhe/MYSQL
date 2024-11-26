@@ -214,3 +214,32 @@ WHERE salary * months = (
 );
 ```
 28. Weather Observation Station 2
+```
+select round (sum(lat_n),2) , round(sum(long_w),2)
+from station ;
+```
+
+New Companies
+```
+SELECT 
+    c.company_code,
+    c.founder,
+    COUNT(DISTINCT l.lead_manager_code) AS total_lead_manager,
+    COUNT(DISTINCT s.senior_manager_code) AS total_senior_manager,
+    COUNT(DISTINCT m.manager_code) AS total_manager,
+    COUNT(DISTINCT e.employee_code) AS total_employee
+FROM 
+    company c
+LEFT JOIN 
+    employee e ON c.company_code = e.company_code
+LEFT JOIN 
+    lead_manager l ON e.lead_manager_code = l.lead_manager_code
+LEFT JOIN 
+    senior_manager s ON e.senior_manager_code = s.senior_manager_code
+LEFT JOIN 
+    manager m ON e.manager_code = m.manager_code
+GROUP BY 
+    c.company_code, c.founder
+ORDER BY 
+    c.company_code;
+```
