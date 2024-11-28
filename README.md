@@ -297,6 +297,23 @@ FROM STATION
 ORDER BY LENGTH(CITY) DESC, CITY DESC
 LIMIT 1
 ```
+or
+```
+-- Query 1: Shortest city name
+SELECT 
+    city, LENGTH(city) AS name_length
+FROM station
+ORDER BY LENGTH(city), city
+LIMIT 1;
+
+-- Query 2: Longest city name
+SELECT 
+    city, LENGTH(city) AS name_length
+FROM station
+ORDER BY LENGTH(city) DESC, city
+LIMIT 1;
+```
+
 40.binary tree nodes
 ```
 SELECT  
@@ -372,3 +389,55 @@ group by s.hacker_id , h.name
 having count(*) >1
 order by count(*) desc , s.hacker_id;
 ```
+45. the blunder
+```
+WITH salary_avg AS (
+    SELECT 
+        AVG(salary) AS actual,
+        AVG(CAST(REPLACE(salary, '0', '') AS DECIMAL(10, 2))) AS miscalculated
+    FROM employees
+)
+SELECT CEILING(actual - miscalculated) 
+FROM salary_avg;
+```
+46. drow the triangle 1
+```
+DELIMITER //
+
+CREATE PROCEDURE PrintStars()
+BEGIN
+    DECLARE counter INT DEFAULT 20;
+
+    WHILE counter > 0 DO
+        SELECT REPEAT('* ', counter) AS stars;
+        SET counter = counter - 1;
+    END WHILE;
+END;
+
+//
+
+DELIMITER ;
+
+-- Call the procedure
+CALL PrintStars();
+```
+47. drow the triangle 2
+```
+delimiter //
+create procedure printstar()
+begin 
+     declare counter int  default 20;
+     declare x int default 1 ;
+     
+     while x <= counter  do 
+     select repeat('* ',x) as star;
+     set x = x+1;
+end while;
+end;
+//
+
+delimiter ;
+
+call printstar();
+```
+48.
