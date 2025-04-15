@@ -440,11 +440,12 @@ WHERE age NOT BETWEEN 20 AND 22;
 |-------|--------|--------|
 |CONCAT()|	Combine strings	|CONCAT(first_name, ' ', last_name)|
 |LOWER()|	Convert to lowercase|	LOWER(name)|
-|UPPER()|	Convert to uppercase	UPPER(name)|
-|LENGTH()|	Get string length	LENGTH(name)|
+|UPPER()|	Convert to uppercase|	UPPER(name)|
+|LENGTH()|	Get string length|	LENGTH(name)|
 ### 🔸 Date/Time Functions:
 
 |Function|	Use|	Example|
+|-------|---------|--------|
 |NOW()|	Current date and time|	NOW()|
 |CURDATE()	|Current date only|	CURDATE()|
 |YEAR()	|Extract year from date	|YEAR(dob)|
