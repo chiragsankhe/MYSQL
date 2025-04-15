@@ -510,3 +510,311 @@ FROM students
 RIGHT JOIN marks
 ON students.student_id = marks.student_id;
 ```
+
+### 19. 🔷 UNION – Combine Results from Multiple Queries
+#### 🔹 What it does:
++ UNION combines the result sets of two or more 1SELECT` statements into a single result.
+
+#### ✅ Key Rules:
++ The SELECT statements must have the same number of columns
+
++ The data types of the columns must be compatible
+
++ It removes duplicate rows by default
+
+🧠 Example:
+##### Table: students_2023
+
+name
+```
+Chirag
+Anya
+```
+##### Table: students_2024
+
+name
+```
+Raj
+Anya
+```
+```sh
+SELECT name FROM students_2023
+UNION
+SELECT name FROM students_2024;
+```
+##### ✔ Result:
+```sh
+Chirag
+Anya
+Raj
+```
+#### 🎯 Want to include duplicates? Use UNION ALL:
+```sh
+SELECT name FROM students_2023
+UNION ALL
+SELECT name FROM students_2024;
+```
+### 20.  GROUP BY – Group and Aggregate Rows
+#### 🔹 What it does:
++ GROUP BY `groups rows`  that have the same value in a column, and lets you apply aggregate functions like `SUM()`,` COUNT()`,` AVG()`, etc.
+
+🧠 Example:
+Table: marks
+
+|student|	subject|	score|
+|-------|----------|---------|
+|Chirag	|Math	|90|
+|Chirag	|Science|	85|
+|Anya	|Math|	95|
+
+##### 🔸 Find total score per student:
+```SH
+SELECT student, SUM(score) AS total_score
+FROM marks
+GROUP BY student;
+```
+✔ Result:
+```
+Chirag | 175
+Anya   | 95
+```
+🔸 You can also use:
+```SH
+SELECT student, COUNT(*) AS subjects, AVG(score) AS average
+FROM marks
+GROUP BY student;
+```
+🔁 Quick Tip:
+You can even filter grouped data using HAVING:
+```
+SELECT student, SUM(score) AS total_score
+FROM marks
+GROUP BY student
+HAVING total_score > 100;
+```
+Let me know if you want to try an exercise using UNION or GROUP BY with real data!
+
+
+
+
+
+
+
+You said:
+use if having 
+
+
+ChatGPT said:
+Great question, Chirag! Let's learn how to use HAVING with IF` — a powerful combo for conditional logic after grouping rows 🔍
+
+🔹 First, What's HAVING?
+HAVING is like WHERE, but it's used after GROUP BY to filter grouped results.
+
+🔸 What's IF() in SQL?
+IF(condition, value_if_true, value_if_false)
+It's used to apply conditional logic in SQL queries.
+
+✅ Example Table: marks
+
+student	subject	score
+Chirag	Math	90
+Chirag	English	85
+Anya	Math	95
+Raj	English	40
+🧠 Example: Use IF in SELECT + filter with HAVING
+🎯 Goal: Show total score per student and filter only students who passed (score ≥ 150)
+sql
+Copy
+Edit
+SELECT 
+  student,
+  SUM(score) AS total_score,
+  IF(SUM(score) >= 150, 'Pass', 'Fail') AS result
+FROM marks
+GROUP BY student
+HAVING result = 'Pass';
+✔ This groups by student, calculates total score, labels as 'Pass' or 'Fail', and shows only those who passed.
+
+🔁 Alternate way: Use HAVING directly with condition
+sql
+Copy
+Edit
+SELECT 
+  student,
+  SUM(score) AS total_score
+FROM marks
+GROUP BY student
+HAVING SUM(score) >= 150;
+📌 You don't need IF() if you're just filtering — but IF() is helpful when you want to label or categorize the result.
+
+
+### 21. 🔹 What is HAVING?
++ HAVING is used to filter results after a `  GROUP BY`  operation.
++ You can’t use WHERE with aggregate functions like ` SUM()` ,` COUNT()` , etc. — that’s where HAVING comes in.
+
+✅ Syntax:
+```
+SELECT column_name, AGGREGATE_FUNCTION(column_name)
+FROM table_name
+GROUP BY column_name
+HAVING condition;
+```
+🧠 Example Table: sales
+
+|customer|	amount|
+|---------|----------|
+|Chirag|	500|
+|Chirag	|700|
+|Anya|	300|
+|Raj	|400|
+##### 🔸 Example 1: Customers whose total purchase > 1000
+```SH
+SELECT customer, SUM(amount) AS total
+FROM sales
+GROUP BY customer
+HAVING SUM(amount) > 1000;
+```
+✔ Result:
+```
+Chirag | 1200
+```
+##### 🔸 Example 2: Use COUNT() with HAVING
+```
+SELECT customer, COUNT(*) AS orders
+FROM sales
+GROUP BY customer
+HAVING COUNT(*) > 1;
+```
+✔ Shows customers who placed more than 1 order
+
+##### 🔸 Can you use WHERE and HAVING together?
+Yes!
+Use WHERE to filter before grouping and HAVING after grouping.
+```
+SELECT customer, SUM(amount) AS total
+FROM sales
+WHERE amount > 100
+GROUP BY customer
+HAVING total > 500;
+```
+📌 Summary:
+
++ Clause	Used For	Can use Aggregates?
++ WHERE	Filters rows before grouping	❌ No
++ HAVING	Filters rows after grouping	✅ Yes
+
+### 22. mysql CONCEPT 
+
+####🔹 1. MySQL Create Database
+```
+CREATE DATABASE my_database;
+```
+####🔹 2. MySQL Drop Database
+```
+DROP DATABASE my_database;
+```
+####🔹 3. MySQL Create Table
+```
+CREATE TABLE students (
+  id INT,
+  name VARCHAR(100)
+);
+```
+#### 🔹 4. MySQL Drop Table
+```
+DROP TABLE students;
+```
+#### 🔹 5. MySQL Alter Table
+Used to modify an existing table.
+```sh
+ALTER TABLE students ADD age INT;
+ALTER TABLE students MODIFY name VARCHAR(150);
+ALTER TABLE students DROP COLUMN age;
+```
+#### 🔹 6. MySQL Constraints (General)
+Used to apply rules to table columns (explained below).
+
+#### 🔹 7. MySQL NOT NULL
+```
+CREATE TABLE students (
+  id INT NOT NULL,
+  name VARCHAR(100) NOT NULL
+);
+```
+#### 🔹 8. MySQL UNIQUE
+Ensures all values in a column are different.
+```sh
+CREATE TABLE users (
+  email VARCHAR(100) UNIQUE
+);
+```
+#### 🔹 9. MySQL PRIMARY KEY
+Uniquely identifies each row.
+```
+CREATE TABLE students (
+  id INT PRIMARY KEY,
+  name VARCHAR(100)
+);
+```
+#### 🔹 10. MySQL FOREIGN KEY
+Links two tables.
+```
+CREATE TABLE orders (
+  order_id INT PRIMARY KEY,
+  student_id INT,
+  FOREIGN KEY (student_id) REFERENCES students(id)
+);
+```
+#### 🔹 11. MySQL CHECK
+Sets a condition for column values.
+```
+CREATE TABLE students (
+  age INT CHECK (age >= 18)
+);
+```
+#### 🔹 12. MySQL DEFAULT
+Sets a default value if none is provided.
+```
+CREATE TABLE students (
+  city VARCHAR(100) DEFAULT 'Mumbai'
+);
+```
+#### 🔹 13. MySQL Create Index
+Speeds up queries (especially on large tables).
+```
+CREATE INDEX idx_name ON students(name);
+```
+#### 🔹 14. MySQL AUTO_INCREMENT
+Automatically increases the value.
+```
+CREATE TABLE students (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(100)
+);
+```
+#### 🔹 15. MySQL Dates
+Stores date/time values.
+```
+CREATE TABLE logs (
+  id INT,
+  created_at DATE
+);
+```
+-- Inserting
+INSERT INTO logs VALUES (1, '2025-04-15');
+####  16. MySQL Views
+A virtual table based on a query.
+```
+CREATE VIEW student_view AS
+SELECT name, city FROM students;
+
+```
+-- Using the view
+SELECT * FROM student_view;
+
+
+
+
+
+
+
