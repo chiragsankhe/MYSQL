@@ -592,61 +592,6 @@ FROM marks
 GROUP BY student
 HAVING total_score > 100;
 ```
-Let me know if you want to try an exercise using UNION or GROUP BY with real data!
-
-
-
-
-
-
-
-You said:
-use if having 
-
-
-ChatGPT said:
-Great question, Chirag! Let's learn how to use HAVING with IF` — a powerful combo for conditional logic after grouping rows 🔍
-
-🔹 First, What's HAVING?
-HAVING is like WHERE, but it's used after GROUP BY to filter grouped results.
-
-🔸 What's IF() in SQL?
-IF(condition, value_if_true, value_if_false)
-It's used to apply conditional logic in SQL queries.
-
-✅ Example Table: marks
-
-student	subject	score
-Chirag	Math	90
-Chirag	English	85
-Anya	Math	95
-Raj	English	40
-🧠 Example: Use IF in SELECT + filter with HAVING
-🎯 Goal: Show total score per student and filter only students who passed (score ≥ 150)
-sql
-Copy
-Edit
-SELECT 
-  student,
-  SUM(score) AS total_score,
-  IF(SUM(score) >= 150, 'Pass', 'Fail') AS result
-FROM marks
-GROUP BY student
-HAVING result = 'Pass';
-✔ This groups by student, calculates total score, labels as 'Pass' or 'Fail', and shows only those who passed.
-
-🔁 Alternate way: Use HAVING directly with condition
-sql
-Copy
-Edit
-SELECT 
-  student,
-  SUM(score) AS total_score
-FROM marks
-GROUP BY student
-HAVING SUM(score) >= 150;
-📌 You don't need IF() if you're just filtering — but IF() is helpful when you want to label or categorize the result.
-
 
 ### 21. 🔹 What is HAVING?
 + HAVING is used to filter results after a `  GROUP BY`  operation.
