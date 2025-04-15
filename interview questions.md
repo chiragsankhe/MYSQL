@@ -444,7 +444,7 @@ WHERE age NOT BETWEEN 20 AND 22;
 |LENGTH()|	Get string length|	LENGTH(name)|
 ### 🔸 Date/Time Functions:
 
-|Function|	Use|	Example|
+|Function |	Use |	Example|
 |-------|---------|--------|
 |NOW()|	Current date and time|	NOW()|
 |CURDATE()	|Current date only|	CURDATE()|
