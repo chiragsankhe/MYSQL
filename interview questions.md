@@ -366,7 +366,94 @@ WHERE name LIKE 'An%';
 ```
 ✔ Matches: Anya
 
+#### 15. 🔹 What is IN?
++ The IN operator allows you to match a column against a list of values, like saying:
++ ` "Is this value in this list?"` 
 
+✅ Syntax:
+```sh
+SELECT * FROM table_name
+WHERE column_name IN (value1, value2, value3);
+```
+🔸 Get students with grade A or C:
+```sh
+SELECT * FROM students_info
+WHERE grade IN ('A', 'C');
+```
+✔ Matches: Chirag and Raj
 
+#### 16. 🔹 What is BETWEEN?
+BETWEEN is used with the WHERE clause to select rows within a range — including the start and end values.
+
+✅ Syntax:
+```
+SELECT * FROM table_name
+WHERE column_name BETWEEN value1 AND value2;
+```
++ 🔸 It works for` numbers` ,` dates` , and text (alphabetical order).
+
+🔸 Find students aged between 20 and 22:
+```sh
+SELECT * FROM students_info
+WHERE age BETWEEN 20 AND 22;
+```
+✔ Matches: Chirag, Anya, Meera
+
+🗓️ Example (dates):
+If you have a dob (date of birth) column:
+
+```sh
+SELECT * FROM students_info
+WHERE dob BETWEEN '2003-01-01' AND '2005-12-31';
+```
+🆚 NOT BETWEEN:
+```sh
+SELECT * FROM students_info
+WHERE age NOT BETWEEN 20 AND 22;
+```
+✔ Excludes ages 20, 21, 22 — includes only Raj (age 19)
+
+### 17. 🔢 Most Used Data Types:
+|Type|	Description	|Example|
+|----|-------------|----------|
+|INT	|Integer numbers	|1, 20, 999|
+|VARCHAR(n)|	Variable-length string |(text)	'Chirag', 'Hello'|
+|DATE|	Date values	|'2024-04-15'|
+|DATETIME	|Date + Time	|'2024-04-15 10:30:00'|
+|FLOAT  DECIMAL|	Decimal numbers |(with precision)	45.67, 99.99|
+|BOOLEAN|	True False| values (0 or 1)	1 (true), 0 (false)|
+
+### ⚙️ Most Used SQL Functions:
+🔸 Aggregate Functions:
+
+|Function	|Use|	Example|
+|---------|-----|----------|
+|COUNT()|	Count| rows	COUNT(*)|
+|SUM()	|Total of numeric column|	SUM(price)|
+|AVG()	|Average of numeric column|	AVG(age)
+|MIN()	|Minimum value|	MIN(score)|
+|MAX()	|Maximum value|	MAX(score)|
+
+### 🔸 String Functions:
+
+|Function	|Use|	Example|
+|-------|--------|--------|
+|CONCAT()|	Combine strings	|CONCAT(first_name, ' ', last_name)|
+|LOWER()|	Convert to lowercase|	LOWER(name)|
+|UPPER()|	Convert to uppercase	UPPER(name)|
+|LENGTH()|	Get string length	LENGTH(name)|
+### 🔸 Date/Time Functions:
+
+|Function|	Use|	Example|
+|NOW()|	Current date and time|	NOW()|
+|CURDATE()	|Current date only|	CURDATE()|
+|YEAR()	|Extract year from date	|YEAR(dob)|
+
+### 🔸 Logical & Comparison:
++ AND, OR, NOT
+
++ IN, BETWEEN, LIKE
+
++ IS NULL, IS NOT NULL
 
 
