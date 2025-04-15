@@ -457,4 +457,56 @@ WHERE age NOT BETWEEN 20 AND 22;
 
 + IS NULL, IS NOT NULL
 
+### 18. 🔹 What is a JOIN?
++ A JOIN is used to combine rows from two or more tables based on a related column between them (usually a key like id).
 
+#### 🔥 Most Common Types of JOINs:
+
+|Join Type|	What it Does|
+|----------|-------------|
+|INNER JOIN	|Only matching rows from both tables ✅|
+|LEFT JOIN	|All rows from left table + matched from right (if any)|
+|RIGHT JOIN|	All rows from right table + matched from left (if any)|
+| FULL JOIN |(not in MySQL directly)	All rows when there's a match in one of the tables|
+
+🧠 Example Scenario:
+You have two tables:
+
+#### 🟦 students table:
+
+|student_id|	name|
+|-------|--------|
+|1	|Chirag|
+|2	|Anya|
+#### 🟩 marks table:
+
+|student_id	|subject	|score|
+|---------|--------|-------|
+|1|	Math|	90|
+|1	|English|85|
+|2|	Math|	88|
+### 🔸 1. INNER JOIN — only matched records:
+```sh
+SELECT students.name, marks.subject, marks.score
+FROM students
+INNER JOIN marks
+ON students.student_id = marks.student_id;
+```
+✔ Returns only students who have marks.
+
+### 🔸 2. LEFT JOIN — all students + marks (if any):
+```sh
+SELECT students.name, marks.subject, marks.score
+FROM students
+LEFT JOIN marks
+ON students.student_id = marks.student_id;
+```
+✔ Even if a student has no marks, they’ll still appear with NULL for subject and score.
+
+### 🔸 3. RIGHT JOIN — all marks + student names (if any):
+```sh
+SELECT students.name, marks.subject, marks.score
+FROM students
+RIGHT JOIN marks
+ON students.student_id = marks.student_id;
+```
