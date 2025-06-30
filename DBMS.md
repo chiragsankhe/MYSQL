@@ -480,9 +480,80 @@ Manager  Developer
 ```
 #### 🧬 Difference Between Generalization and Specialization:
 |Feature	|Generalization|	Specialization|
+|--------|----------------|-----------------|
 |🔼 Approach|	Bottom-up	|Top-down|
 |🔧 Operation|	Combines multiple entities	|Breaks a single entity into sub-entities|
 |📌 Focus|	Common features abstraction	|Specific features extension|
 |💡 Exampl|e	Car + Bike → Vehicle|	Employee → Manager, Developer|
+
+
+## 📘 What is Normalization in DBMS?
++ Normalization is a process in relational database design that organizes data efficiently by:
+
++ Removing data redundancy (duplicate data),
+
++ Ensuring data integrity,
+
+ +Making data easier to maintain.
+
+## 🔧 Why Normalization is Important?
+Problem Without Normalization	What Happens
++ 🔁 Data redundancy	Same data repeated in multiple places
++ ❌ Insertion anomaly	Can’t insert data without other unrelated data
++ 📝 Update anomaly	Need to update the same data in many rows
++ ❌ Deletion anomaly	Deleting a row may remove critical information
+
+📶 Normal Forms (NF)
+There are multiple levels (called normal forms) used to normalize a table. Each level has rules.
+
+## 🔹 1. First Normal Form (1NF)
+✅ Rule:
+
+ + Each cell should contain atomic (indivisible) values.
+
++ No repeating groups or arrays in a column.
+
+🔁 Example Violation:
+
+```
+Name       | Phone
+-----------|------------------
+Chirag     | 12345, 67890     ❌
+```
+✅ Fixed:
+```
+Edit
+Name       | Phone
+-----------|--------
+Chirag     | 12345
+Chirag     | 67890
+``
+### 🔹 2. Second Normal Form (2NF)
+✅ Rule:
+
++ Must be in 1NF, and
+
++ No partial dependency (non-key attribute should depend on the full primary key).
+
+❌ Violation:
+
+```
+(StudentID, CourseID) → CourseName  ← only depends on CourseID
+```
+✅ Fix: Move CourseID → CourseName to a separate table.
+
+### 🔹 3. Third Normal Form (3NF)
+✅ Rule:
+
++ Must be in 2NF, and
+
++ No transitive dependency (non-key attributes should not depend on other non-key attributes).
+
+❌ Violation:
+```
+StudentID → DepartmentID → DepartmentName
+```
+✅ Fix: Split into two tables.
+
 
 
