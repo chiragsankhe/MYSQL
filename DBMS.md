@@ -527,7 +527,7 @@ Name       | Phone
 -----------|--------
 Chirag     | 12345
 Chirag     | 67890
-``
+```
 ### 🔹 2. Second Normal Form (2NF)
 ✅ Rule:
 
