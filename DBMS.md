@@ -407,7 +407,7 @@ HAVING AVG(Salary) > 50000;
 + HAVING filters out departments with low average salaries after grouping.
 
 
-🔍 Difference Between File System and DBMS
+## 🔍 Difference Between File System and DBMS
 
 |Feature	|File System|	DBMS (Database Management System)|
 |--------|---------------|---------------------------------|
@@ -422,5 +422,67 @@ HAVING AVG(Salary) > 50000;
 |🔁 Backup & Recovery|	Manual and difficult|	Automatic, supports backup & recovery features||
 |🔄 Transactions (ACID)	|Not supported	|Fully supports ACID properties|
 |📊 Performance	|Slower for large datasets|	Optimized for performance and large-scale data|
+
+
+
+## 📘 Generalization and Specialization in DBMS (ER Model)
++ These are conceptual modeling techniques used in Entity-Relationship (ER) diagrams to handle hierarchical relationships between entities.
+
+### 🔼 Generalization:
+🧠 Definition:
++ Combining two or more lower-level entities into a higher-level (more general) entity.
+
++ It is a bottom-up approach.
+
++ 🔍 Purpose:
++ To abstract common features from multiple entities.
+
+✅ Example:
+Entities:
+```
+Car (has model, engineNo)
+
+Bike (has model, engineNo)
+```
+⬇️ Generalization:
+
++ Vehicle (superclass with common attributes like model, engineNo)
+
+```
+   Car       Bike
+     \       /
+     Vehicle   ← generalized entity
+```
+### 🔽 Specialization:
+ 🧠 Definition:
++ Creating subclasses (more specific entities) from a higher-level entity.
+
++ It is a top-down approach.
+
+🔍 Purpose:
++ To add specific attributes or behaviors to different subtypes.
+
+✅ Example:
++ Entity:
+
+  =Employee (has name, id)
+
+⬇️ Specialization:
+
++ Manager (adds bonus)
+
+Developer (adds programmingLanguage)
+
+```
+   Employee
+    /    \
+Manager  Developer
+```
+#### 🧬 Difference Between Generalization and Specialization:
+|Feature	|Generalization|	Specialization|
+|🔼 Approach|	Bottom-up	|Top-down|
+|🔧 Operation|	Combines multiple entities	|Breaks a single entity into sub-entities|
+|📌 Focus|	Common features abstraction	|Specific features extension|
+|💡 Exampl|e	Car + Bike → Vehicle|	Employee → Manager, Developer|
 
 
