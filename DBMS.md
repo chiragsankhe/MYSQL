@@ -407,4 +407,20 @@ HAVING AVG(Salary) > 50000;
 + HAVING filters out departments with low average salaries after grouping.
 
 
+🔍 Difference Between File System and DBMS
+
+|Feature	|File System|	DBMS (Database Management System)|
+|--------|---------------|---------------------------------|
+|📁 Definition| Manages files on disk manually|	Software to store, retrieve, and manage data efficiently|
+|📦 Data Storage|	Stores data in flat files (e.g., .txt, .csv)|	Stores data in tables with schemas|
+|🔍 Querying Data|	No built-in query language|	Uses SQL for powerful querying|
+|🧱 Structure|	No strict structure;| programmer-defined	Strict structure using tables, rows, and columns|
+|🔁 Redundancy|	High redundancy; hard to control	|DBMS uses normalization to reduce redundancy|
+|🔒 Security|	Handled by OS or developer manually|	Built-in user access control and security features|
+|🔁 Concurrency| Control	No built-in support for multiple users	|Built-in support for multiple users accessing data|
+|🧪 Data Integrity|	Handled manually by programmer	|Enforced automatically by constraints (e.g., PK, FK)|
+|🔁 Backup & Recovery|	Manual and difficult|	Automatic, supports backup & recovery features||
+|🔄 Transactions (ACID)	|Not supported	|Fully supports ACID properties|
+|📊 Performance	|Slower for large datasets|	Optimized for performance and large-scale data|
+
 
