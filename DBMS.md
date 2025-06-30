@@ -72,50 +72,51 @@ Student Table
 Here, BRANCH_CODE in STUDENT is a foreign key referencing BRANCH_CODE in BRANCH.
 
 
-The Entity-Relationship (ER) Model is a high-level conceptual data model used to define the structure of a database in terms of:
+## The Entity-Relationship (ER) Model is a high-level conceptual data model used to define the structure of a database in terms of:
 
-Entities
++ Entities
 
-Attributes
++ Attributes
 
 
 🔷 Key Components of ER Model:
-1. Entity
+## 1. Entity
 An entity is an object or thing in the real world that is distinguishable from other objects.
 
 📌 Example: Student, Employee, Book
 
 Types of Entities:
 
-Strong Entity – Exists independently (e.g., Student)
++ Strong Entity – Exists independently (e.g., Student)
 
-Weak Entity – Depends on another entity (e.g., Dependent of Employee)
++ Weak Entity – Depends on another entity (e.g., Dependent of Employee)
 
-2. Attribute
-Attributes are properties or details of an entity.
+## 2. Attribute
++ Attributes are properties or details of an entity.
 
 📌 Example: A Student entity may have attributes like RollNo, Name, Age.
 
-Types of Attributes:
+## Types of Attributes:
 
-Type	Description	Example
-Simple	Cannot be divided further	Age, Salary
-Composite	Can be divided into smaller parts	Name → First, Last
-Derived	Can be derived from other attributes	Age from DOB
-Multivalued	Can have multiple values	PhoneNumbers
-Key Attribute	Uniquely identifies an entity	StudentID
+|Type	|Description|	Example|
+|---------|-----------|-----------|
+|Simple	|Cannot be divided further|	Age, Salary|
+|Composite	|Can be divided into smaller parts	|Name → First, Last|
+|Derived	|Can be derived from other attributes|	Age from DOB|
+|Multivalued|	Can have multiple values	|PhoneNumbers|
+Key Attribute|	Uniquely identifies an entity|	StudentID|
 
-3. Relationship
+## 3. Relationship
 A relationship represents how two or more entities are related to each other.
 
 📌 Example: A Student enrolls in a Course.
 
-Types of Relationships:
+## Types of Relationships:
 
 Type	Description	Example
-One-to-One	One entity maps to one only	Employee ↔ ParkingSpot
-One-to-Many	One maps to many	Teacher → Students
-Many-to-One	Many maps to one	Orders → Customer
-Many-to-Many	Many map to many	Student ↔ Course
++ `One-to-One` 	 One entity maps to one only	Employee ↔ ParkingSpot
++ `One-to-Many`	 One maps to many	Teacher → Students
++ `Many-to-One`	 Many maps to one	Orders → Customer
++ `Many-to-Many` 	Many map to many	Student ↔ Course
 
 
