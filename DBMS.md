@@ -119,4 +119,42 @@ Type	Description	Example
 + `Many-to-One`	 Many maps to one	Orders → Customer
 + `Many-to-Many` 	Many map to many	Student ↔ Course
 
+## What are constraints in DBMS?
++ Constraints in DBMS are rules that limit the type of data that can be inserted into a table to ensure data integrity and consistency.
++  Common types of constraints include: `NOT NULL`,` PRIMARY KEY`,` FOREIGN KEY`,` UNIQUE`,` CHECK`,` DEFAULT`.
+
+## what is diffrenc between unique and null constrains?
+###  ` UNIQUE Constraint`:
++ Ensures all values in a column (or combination of columns) are distinct.
+
++ Allows only one occurrence of each value.
+
++ ✅ Allows NULL values (but the behavior depends on the database):
+
++ Most databases (like MySQL, PostgreSQL) allow multiple NULLs in a UNIQUE column.
+
++ NULL is not considered "equal" to another NULL.
+
+Example:
+```
+CREATE TABLE users (
+    email VARCHAR(100) UNIQUE
+);
+```
++ ✅ Allows: ('a@example.com'), ('b@example.com'), (NULL), (NULL)
++ ❌ Error if you try to insert another 'a@example.com'.
+
+### 🔹 NOT NULL Constraint:
++ Ensures that a column cannot have NULL values.
+
++ It does not restrict uniqueness, only that the value must exist.
+
+Example:
+```
+CREATE TABLE users (
+    username VARCHAR(100) NOT NULL
+);
+```
++ ❌ Cannot insert: (NULL)
++ ✅ Can insert duplicate values like ('chirag'), ('chirag')
 
