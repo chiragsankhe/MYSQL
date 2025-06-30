@@ -600,9 +600,9 @@ WHERE column_name LIKE 'pattern';
 + 🔤 Wildcards used with `LIKE`:
 |Wildcard|	Meaning|	Example	Matches|
 |--------|-----------|-----------------|
-|  % |	Matches any number of characters	name LIKE 'A%'\	Alice, Amit, Alex
-|  _ |	Matches a single character|	name LIKE |'_at'	Cat, Bat, Hat
-| [ ] |	Character range (in some DBMS)	name LIKE '[CH]at' (SQL Server)|	Chat, Hat
+|  % |	Matches any number of characters	name LIKE 'A%'\	Alice, Amit, Alex|
+|  _ |	Matches a single character|	name LIKE |'_at'	Cat, Bat, Hat|
+| [ ] |	Character range (in some DBMS)	name LIKE '[CH]at' (SQL Server)|	Chat, Hat|
 
 🔍 Examples:
 ### 1. Starts with 'A'
