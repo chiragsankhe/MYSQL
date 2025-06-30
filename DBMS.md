@@ -556,4 +556,73 @@ StudentID → DepartmentID → DepartmentName
 ✅ Fix: Split into two tables.
 
 
+## 🔒 What is Integrity Constraint in DBMS?
++ An Integrity Constraint is a rule that ensures the `accuracy`, `validity`, and` consistency `of data in a database.
+
++ These rules are defined on tables and columns to prevent invalid data from being inserted, updated, or deleted.
+
+### ✅ Common Types of Integrity Constraints:
+Constraint Type	Description
++ 1. `NOT NULL`	Ensures a column cannot have NULL values.
++ 2. `UNIQUE`	Ensures all values in a column are different.
++ 3. `PRIMARY KEY`	Combines NOT NULL + UNIQUE. Identifies each row uniquely.
++ 4. `FOREIGN KEY`	Ensures a column’s value matches a value in another table. Maintains referential integrity.
++ 5. `CHECK`	Validates data against a custom rule or condition.
++ 6.` DEFAULT` 	Assigns a default value if no value is provided.
+
+🧱 Example Table:
+```
+CREATE TABLE Student (
+    RollNo INT PRIMARY KEY,             -- Uniquely identifies each student
+    Name VARCHAR(50) NOT NULL,          -- Cannot be NULL
+    Age INT CHECK (Age >= 18),          -- Must be 18 or older
+    Email VARCHAR(100) UNIQUE,          -- No duplicate emails allowed
+    DeptID INT,
+    FOREIGN KEY (DeptID) REFERENCES Department(DeptID)  -- Must exist in Department table
+);
+```
+### 🔄 Why Integrity Constraints Are Important?
++ Benefit	Description
++ ✅ `Data accuracy	` Prevents invalid data from entering the table
++ 🔒 `Data consistency`	Keeps relationships between tables consistent
++ 🔁 `Automatic enforcement` 	Enforced automatically by DBMS
++ 📉 ` Reduces` bugs	Less chance of data corruption or logic errors
+
+##  Pattern Matching in SQL
++ Pattern Matching in SQL is used to search for specific patterns in text data (like names, emails, addresses, etc.) using the LIKE, ILIKE, or REGEXP operators depending on the DBMS.
+
+✅ Most Common: LIKE Operator
+🔹 Syntax:
+```
+SELECT * FROM table_name
+WHERE column_name LIKE 'pattern';
+```
++ 🔤 Wildcards used with `LIKE`:
+|Wildcard|	Meaning|	Example	Matches|
+|--------|-----------|-----------------|
+|  % |	Matches any number of characters	name LIKE 'A%'\	Alice, Amit, Alex
+|  _ |	Matches a single character|	name LIKE |'_at'	Cat, Bat, Hat
+| [ ] |	Character range (in some DBMS)	name LIKE '[CH]at' (SQL Server)|	Chat, Hat
+
+🔍 Examples:
+### 1. Starts with 'A'
+```
+SELECT * FROM Employee
+WHERE name LIKE 'A%';
+```
+### 2. Ends with 'n'
+```
+SELECT * FROM Student
+WHERE name LIKE '%n';
+```
+### 3. Contains 'ra'
+```
+SELECT * FROM Customers
+WHERE name LIKE '%ra%';
+```
+### 4. Exactly 4-letter names starting with ‘J’
+```
+SELECT * FROM Users
+WHERE name LIKE 'J___';
+```
 
