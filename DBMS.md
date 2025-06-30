@@ -12,51 +12,63 @@
 + `Backup and Recovery`: Offers automatic backup and recovery mechanisms.
 + `Concurrent Access`: Allows multiple users to access the database at the same time without conflicts
 
-What is the difference between DBMS and RDBMS?
-DBMS (Database Management System): A system that allows users to create, store, modify, and delete data. It does not require a relational structure for data organization. Examples: Microsoft Access, XML databases.
-RDBMS (Relational Database Management System): A subset of DBMS that stores data in a structured format, using tables (relations), and supports relational operations like joins. It enforces data integrity through keys and supports SQL for querying. Examples: MySQL, Oracle, SQL Server.
+## What is the difference between DBMS and RDBMS?
++ `DBMS` (Database Management System): A system that allows users to create, store, modify, and delete data. 
++ It does not require a relational structure for data organization. Examples: Microsoft Access, XML databases.
++ `RDBMS` (Relational Database Management System): A subset of DBMS that stores data in a structured format, using tables (relations), and supports relational operations + like joins. It enforces data integrity through keys and supports SQL for querying. Examples: MySQL, Oracle, SQL Server.
 
 
-4. What are the different types of DBMS?
-The four types of DBMS are:
+## What are the different types of DBMS?
++ The four types of DBMS are:
 
-Hierarchical DBMS: Data is organized in a tree-like structure with parent-child relationships. Example: IBM’s IMS.
-Network DBMS: Data is represented as a graph with many-to-many relationships. Example: Integrated Data Store (IDS).
-Relational DBMS (RDBMS): Data is organized in tables (relations) and managed through SQL. Example: MySQL, PostgreSQL.
-Object-Oriented DBMS: Data is stored as objects, like in object-oriented programming. Example: ObjectDB.
-
-
-What is a relation in DBMS?
-A relation in DBMS is a table that consists of rows and columns. Each row represents a record, and each column represents an attribute or property of the entity being described. Relations are defined by a schema, which specifies the attributes (columns) of the table
-
-What is a table in DBMS?
-A table in DBMS is a collection of data organized in rows and columns. It is the primary structure for storing data in a relational database. Each row represents an entity (record), and each column represents an attribute of that entity.
++ `Hierarchical DBMS`: Data is organized in a tree-like structure with parent-child relationships. Example: IBM’s IMS.
++ `Network DBMS`: Data is represented as a `graph` with many-to-many relationships. Example: Integrated Data Store (IDS).
++ `Relational DBMS (RDBMS`): Data is organized in tables (relations) and managed through SQL. Example: MySQL, PostgreSQL.
++ `Object-Oriented DBMS`: Data is stored as objects, like in object-oriented programming. Example: ObjectDB.
 
 
-What are rows and columns in a DBMS?
-Rows (Tuples): A row represents a single record or entity. Each row contains values for each attribute (column).
+## What is a relation in DBMS?
++ A relation in DBMS is a table that consists of rows and columns.
++  Each row represents a record, and each column represents an attribute or property of the entity being described.
++   Relations are defined by a schema, which specifies the attributes (columns) of the table
+
+  ##  at is a table in DBMS?
++ A table in DBMS is a collection of data organized in rows and columns.
++  It is the primary structure for storing data in a relational database.
++  Each row represents an entity (record), and each column represents an attribute of that entity.
+
+
+## What are rows and columns in a DBMS?
++ `Rows` (Tuples): A row represents a single record or entity. Each row contains values for each attribute (column).
 Columns (Attributes): A column represents a property or characteristic of the entity. Each column has a data type, such as integer, string, etc
 
-What is a primary key? Explain with an example.
-A Primary Key is a unique identifier for each record in a table. It ensures that no two records have the same value for the primary key field. It cannot contain NULL values. Example: In a STUDENT table, ROLL_NO could be the primary key because each student has a unique roll number.
+## What is a primary key? Explain with an example.
++ A Primary Key is a unique identifier for each record in a table. It ensures that no two records have the same value for the primary key field.
++ It cannot contain NULL values. Example: In a `STUDENT table`,` ROLL_NO` could be the primary key because each student has a unique roll number.
 
-ROLL_NO	NAME	ADDRESS
-1	Ram	Delhi
-2	Suresh	Delhi 
 
-What is a foreign key? Explain with an example.
-A Foreign Key is an attribute in a table that links to the primary key in another table. It creates a relationship between two tables, ensuring referential integrity. Example: In a STUDENT table, the BRANCH_CODE could be a foreign key referencing the primary key BRANCH_CODE in the BRANCH table.
+|ROLL_NO|	NAME	|ADDRESS|
+|-------|-------|--------|
+|1|	Ram	|Delhi|
+|2|	Suresh|	Delhi |
+`
+## What is a foreign key? Explain with an example.
++ A Foreign Key is an attribute in a table that links to the primary key in another table. 
++ It creates a relationship between two tables, ensuring referential integrity.
++ Example: In a STUDENT table, the BRANCH_CODE could be a foreign key referencing the primary key BRANCH_CODE in the BRANCH table.
 
 Student Table
 
-ROLL_NO	NAME	BRANCH_CODE
-1	Ram	CS
-2	Suresh	IT
-BRANCH Table
+|ROLL_NO	|NAME |	BRANCH_CODE|
+|--------|------|-----------|
+|1|	Ram	|CS|
+|2|	Suresh	|IT|
 
-BRANCH_CODE	BRANCH_NAME
-CS	Computer Science
-IT	Information Technology
+|BRANCH Table| BRANCH_CODE|	BRANCH_NAME|
+|------------|-------------|---------|
+|CS	|Computer| Science|
+|IT	|Information| Technology|
+
 Here, BRANCH_CODE in STUDENT is a foreign key referencing BRANCH_CODE in BRANCH.
 
 
