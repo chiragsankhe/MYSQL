@@ -158,3 +158,162 @@ CREATE TABLE users (
 + ❌ Cannot insert: (NULL)
 + ✅ Can insert duplicate values like ('chirag'), ('chirag')
 
+## what is degree of relation
+
+### 🔹 Degree of a Relation:
++ The number of attributes (columns) in a relation (table).
+
+🔹 Example:
+```
+CREATE TABLE Student (
+    StudentID INT,
+    Name VARCHAR(50),
+    Age INT,
+    Course VARCHAR(50)
+);
+```
+Here:
+
++ Attributes (columns): StudentID, Name, Age, Course
+
++ ✅ Degree = 4
+
+##  Cardinality
+
+### 🔹 Related Term – Cardinality:
++ While degree is the number of columns,
++ cardinality is the number of rows (tuples) in the table.
+
+Example:
+```
+StudentID	Name	Age	Course
+101	Chirag	20	Java
+102	Ravi	21	Python
+103	Riya	22	Web Dev
+```
+✅ Degree = 4 (4 columns)
+
+✅ Cardinality = 3 (3 rows)
+
+## DBMS architecture 
+## diffrent type of schema 
+## explain diffrent schemas like view level , logical , physical 
+
++ In DBMS architecture, the database is divided into three levels to separate concerns and manage complexity:
+
+### 🔺 1. View Level (External Level)
++ 📌 What it is: The highest level of abstraction.
+
++ 👀 What users see: It defines what part of the data is visible to individual users or applications.
+
++ 🔐 Provides security by restricting access to only necessary data.
+
++ ✅ A user can have multiple views.
+
+Example:
+
++ A student using an app may only see their name, courses, and grades — not internal IDs or admin data.
+
+```
+CREATE VIEW student_view AS
+SELECT name, course, grade FROM student;
+```
+### 🔧 2. Logical Level (Conceptual Level)
++ 📌 What it is: The middle level of abstraction.
+
++ 🎯 Describes what data is stored in the database and relationships among the data.
+
++ 💾 Defines tables, attributes, data types, constraints.
+
++ 🚫 Hides storage and access methods.
+
+Example:
+
+Defines tables like Student, Course, Enrollment and their relationships, primary keys, foreign keys, etc.
+
+### 💽 3. Physical Level (Internal Level)
++ 📌 What it is: The lowest level, closest to the hardware.
+
++ 🧠 Describes how data is physically stored: files, indexes, block allocation, compression, etc.
+
++ 🔒 Not visible to end users or developers.
+
+Example:
+
+How rows are stored in blocks, what indexing strategy is used, how tables are organized on disk.
+
+## 4 main types of database languages in DBMS, each serving a different purpose:
+
+🔹 1. Data Definition Language (DDL)
+📌 Used to define and modify database structure (tables, schemas).
+
+⚙️ It deals with creating, altering, and deleting database objects.
+
+Common DDL Commands:
+
+sql
+Copy
+Edit
+CREATE     -- Create a new table or database
+ALTER      -- Modify existing table structure
+DROP       -- Delete table or database
+TRUNCATE   -- Remove all records from a table (faster than DELETE)
+🔹 2. Data Manipulation Language (DML)
+📌 Used to insert, update, delete, and retrieve data.
+
+🧑‍💻 It interacts with the data inside the tables.
+
+Common DML Commands:
+
+sql
+Copy
+Edit
+SELECT     -- Retrieve data
+INSERT     -- Add new data
+UPDATE     -- Modify existing data
+DELETE     -- Remove data
+🔹 3. Data Control Language (DCL)
+📌 Used to control access to data in the database.
+
+🔐 It handles permissions and security.
+
+Common DCL Commands:
+
+sql
+Copy
+Edit
+GRANT      -- Give access to users
+REVOKE     -- Remove access from users
+🔹 4. Transaction Control Language (TCL)
+📌 Used to manage transactions in a database.
+
+🔄 Ensures data consistency and rollback in case of errors.
+
+Common TCL Commands:
+
+sql
+Copy
+Edit
+COMMIT     -- Save changes
+ROLLBACK   -- Undo changes
+SAVEPOINT  -- Set a point to rollback to
+SET TRANSACTION -- Set properties for a transaction
+🧠 Summary Table:
+Language Type	Purpose	Example Commands
+DDL	Define structure	CREATE, ALTER, DROP
+DML	Manipulate data	SELECT, INSERT, UPDATE
+DCL	Control access	GRANT, REVOKE
+TCL	Manage transactions	COMMIT, ROLLBACK, SAVEPOINT
+
+Let me know if you want a diagram or practice questions for these!
+
+
+
+
+
+
+
+
+
+Ask ChatGPT
+
