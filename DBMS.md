@@ -295,16 +295,70 @@ Common TCL Commands:
 + SAVEPOINT  -- Set a point to rollback to
 + SET TRANSACTION -- Set properties for a transaction
 + 
-🧠 Summary Table:
-Language Type	Purpose	Example Commands
-DDL	Define structure	CREATE, ALTER, DROP
-DML	Manipulate data	SELECT, INSERT, UPDATE
-DCL	Control access	GRANT, REVOKE
-TCL	Manage transactions	COMMIT, ROLLBACK, SAVEPOINT
-
-Let me know if you want a diagram or practice questions for these!
 
 
+##  What is Indexing in DBMS?
++ Indexing is a data structure technique used in DBMS to quickly retrieve records from a database without scanning the entire table.
+
++ It works just like an index in a book — it helps you find data faster, rather than checking every page (row).
+
+### ✅ Why Use Indexing?
++ To speed up SELECT queries.
+
+ =To reduce disk I/O operations.
+
++ Especially useful on large tables with millions of records.
+
+#### 🏗️ How It Works (Basic Idea):
++ The DBMS creates a separate data structure (like a B-tree or Hash table).
+
++ This structure stores key values and a pointer to the actual row in the table.
+
+📂 Example:
+Suppose you have this table:
+```
+CREATE TABLE Employee (
+    EmpID INT PRIMARY KEY,
+    Name VARCHAR(50),
+    Department VARCHAR(50)
+);
+```
+Now you create an index:
+
+```
+CREATE INDEX dept_index ON Employee(Department);
+```
+Now when you run:
+```
+SELECT * FROM Employee WHERE Department = 'HR';
+```
++ 💨 It uses the dept_index instead of scanning the full table.
+
+🧠 Types of Indexes:
+|Type|	Description|
+|----|-------------|
+|Primary Index|	Automatically created on primary key|
+|Unique Index|	Ensures all values are unique|
+|Clustered Index|	Alters the physical order of rows|
+|Non-Clustered Index|	Separate from actual table data|
+|Composite Index|	Index on multiple columns|
+|Bitmap Index	|Uses bitmaps, efficient in low-cardinality data (used in Data Warehouse)|
+
+### ❗ Disadvantages:
++ Slows down INSERT, UPDATE, and DELETE (because index must be updated).
+
++ Takes extra disk space.
+
++ Over-indexing can harm performance.
+
+📌 Summary:
+### Feature	Description
++ Purpose	Speed up data retrieval
++ Works on	One or more columns
++ Benefits	Fast SELECT queries
++ Cost	Extra memory and slower write operations
+
+Would you like to see how index data structures (like B-trees) look visually or in code?
 
 
 
@@ -312,5 +366,45 @@ Let me know if you want a diagram or practice questions for these!
 
 
 
-Ask ChatGPT
+## 🔍 Difference Between WHERE and HAVING Clause
+|Feature|	WHERE Clause	|HAVING Clause|
+|📌 Purpose|	Filters rows before grouping	|Filters groups after GROUP BY|
+|🧱 Works On|	Individual rows|	Aggregated groups|
+|🧮 Used |With	SELECT, UPDATE, DELETE|	Usually with GROUP BY|
+|🔢 Aggregate Functions|	❌ Cannot be used with aggregates directly|	✅ Used to filter with aggregate functions|
+|📍 Executes|	Before GROUP BY|	After GROUP BY\
+
+
+### ✅ WHERE Clause Example:
+```
+SELECT * FROM Employee
+WHERE Department = 'HR';
+```
+Filters individual rows where Department = 'HR'.
+
+
+### ✅ HAVING Clause Example:
+```
+SELECT Department, COUNT(*) AS emp_count
+FROM Employee
+GROUP BY Department
+HAVING COUNT(*) > 5;
+```
+First groups employees by department.
+
+Then filters only those groups with more than 5 employees.
+
+### 🔄 Both Used Together Example:
+```
+SELECT Department, AVG(Salary)
+FROM Employee
+WHERE Salary > 30000
+GROUP BY Department
+HAVING AVG(Salary) > 50000;
+```
++ WHERE filters out low-salary employees before grouping.
+
++ HAVING filters out departments with low average salaries after grouping.
+
+
 
