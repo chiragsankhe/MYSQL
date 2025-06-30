@@ -244,60 +244,57 @@ How rows are stored in blocks, what indexing strategy is used, how tables are or
 
 ## 4 main types of database languages in DBMS, each serving a different purpose:
 
-🔹 1. Data Definition Language (DDL)
-📌 Used to define and modify database structure (tables, schemas).
+### 🔹 1. Data Definition Language (DDL)
++ 📌 Used to define and modify database structure (tables, schemas).
 
-⚙️ It deals with creating, altering, and deleting database objects.
++ ⚙️ It deals with creating, altering, and deleting database objects.
 
 Common DDL Commands:
 
-sql
-Copy
-Edit
-CREATE     -- Create a new table or database
-ALTER      -- Modify existing table structure
-DROP       -- Delete table or database
-TRUNCATE   -- Remove all records from a table (faster than DELETE)
-🔹 2. Data Manipulation Language (DML)
-📌 Used to insert, update, delete, and retrieve data.
 
-🧑‍💻 It interacts with the data inside the tables.
+
++ `CREATE`     -- Create a new table or database
++ `ALTER `     -- Modify existing table structure
++ `DROP`       -- Delete table or database
++` TRUNCATE`   -- Remove all records from a table (faster than DELETE)
+
+### 🔹 2. Data Manipulation Language (DML)
++ 📌 Used to insert, update, delete, and retrieve data.
+
++ 🧑‍💻 It interacts with the data inside the tables.
 
 Common DML Commands:
 
-sql
-Copy
-Edit
-SELECT     -- Retrieve data
-INSERT     -- Add new data
-UPDATE     -- Modify existing data
-DELETE     -- Remove data
-🔹 3. Data Control Language (DCL)
+
++ `SELECT `    -- Retrieve data
++ `INSERT`     -- Add new data
++ `UPDATE `    -- Modify existing data
++ `DELETE`     -- Remove data
+  
+### 🔹 3. Data Control Language (DCL)
 📌 Used to control access to data in the database.
 
-🔐 It handles permissions and security.
++ 🔐 It handles permissions and security.
 
 Common DCL Commands:
 
-sql
-Copy
-Edit
-GRANT      -- Give access to users
-REVOKE     -- Remove access from users
-🔹 4. Transaction Control Language (TCL)
-📌 Used to manage transactions in a database.
 
-🔄 Ensures data consistency and rollback in case of errors.
++ GRANT      -- Give access to users
++ REVOKE     -- Remove access from users
+  
+### 🔹 4. Transaction Control Language (TCL)
++ 📌 Used to manage transactions in a database.
+
++ 🔄 Ensures data consistency and rollback in case of errors.
 
 Common TCL Commands:
 
-sql
-Copy
-Edit
-COMMIT     -- Save changes
-ROLLBACK   -- Undo changes
-SAVEPOINT  -- Set a point to rollback to
-SET TRANSACTION -- Set properties for a transaction
+
++ COMMIT     -- Save changes
++ ROLLBACK   -- Undo changes
++ SAVEPOINT  -- Set a point to rollback to
++ SET TRANSACTION -- Set properties for a transaction
++ 
 🧠 Summary Table:
 Language Type	Purpose	Example Commands
 DDL	Define structure	CREATE, ALTER, DROP
