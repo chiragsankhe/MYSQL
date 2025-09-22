@@ -240,14 +240,51 @@ WHERE D.dept_name = 'Finance';
   group by E.emp_id
   having count(EP.project_id) >1;
 -- 29 Find the employee(s) who work on both "Mobile App" and "Cloud Migration".
+SELECT E.emp_name
+FROM employees E
+JOIN EmployeeProjects EP ON E.emp_id = EP.emp_id
+JOIN projects P ON EP.project_id = P.project_id
+WHERE P.project_name IN ('Mobile App', 'Cloud Migration')
+GROUP BY E.emp_id, E.emp_name
+HAVING COUNT(DISTINCT P.project_name) = 2;
 
-Show the highest-paid employee in IT dept.
 
-List employees and their roles in projects.
+-- 30 Show the highest-paid employee in IT dept.
 
-Show departments with average salary > 70k.
+select E.emp_name , E.salary, D.dept_name 
+from employees E
+join departments D on E.dept_id = D.dept_id
+where D.dept_name = "IT"
+order by E.salary desc
+limit 1;
 
-Find employees who earn more than their department average.
+
+-- 31 List employees and their roles in projects.
+SELECT E.emp_name, EP.role, P.project_name
+FROM employees E
+JOIN EmployeeProjects EP ON E.emp_id = EP.emp_id
+JOIN projects P ON EP.project_id = P.project_id;
+
+
+
+-- 32 Show departments with average salary > 70k.
+
+select D.dept_name , avg(E.salary)
+from employees E
+join departments D on E.dept_id = D.dept_id
+group by D.dept_name
+having avg(E.salary) > 70000;
+
+-- Find employees who earn more than their department average.
+select E.emp_name , E.salary , D.dept_name 
+from employees E
+join departments D on E.dept_id = D.dept_id
+where E.salary > (select  avg(E2.salary)
+                 from employees E2
+                 where E2.dept_id  = D.dept_id
+                 
+ );
+
 
 Show projects with budget > 1,00,000.
 
